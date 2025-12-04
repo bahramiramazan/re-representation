@@ -35,7 +35,7 @@ The datasets can be downloaded from the below link
 
 [tacred](https://catalog.ldc.upenn.edu/LDC2018T24)
 
-obtain retaced by applying the patch from the the following link:
+obtain retacred by applying the patch from the the following link to the tacred:
 [retacred](https://github.com/gstoica27/Re-TACRED)
 
 
