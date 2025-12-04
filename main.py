@@ -2,11 +2,6 @@
 import argparse
 import os
 from os.path import exists
-# from torch.nn.functional import log_softmax, pad
-# from torch.optim.lr_scheduler import LambdaLR
-# from torch.utils.data import DataLoader
-
-
 from Train_Eval import *
 from Experiments import *
 from rc_data import pre_process
@@ -47,23 +42,14 @@ if __name__ == "__main__":
     print('backend_model_name',backend_model_name)
     print('experiment',experiment)
 
-
-    exps=['one','two','three','four','five','six','paper2_WikidataPretraining','paper2_EVALutionPretraining','paper2_lexicalZeroshotTraining','paper2_RE_Trained_lexicalTraining']
+    exps=['one','two','three','four','five','six']
     
     os.environ['CUDA_LAUNCH_BLOCKING']="1"
     os.environ['TORCH_USE_CUDA_DSA'] = "1"
     print('experiment in exps ',experiment in exps )
 
-
-
     if experiment in exps  or experiment=='wordanalogy':
-
         experiment_run(data_name,experiment,mode=task,model_to_train=model_to_train,backend_model_name=backend_model_name)
-
-
-
-
-
     elif str(task) =="train"  :
         print("train")
         georoc_train_eval(data_name,mode='train')

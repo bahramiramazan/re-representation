@@ -7,19 +7,14 @@ import warnings
 import argparse
 from rc_util import *
 from RC_Model import *
-# from Analogy_Model import *
-# from Additional_Experiments import do_table_6
-# from Multichoice_Model import run_mc
 import json
 import pandas as pd
 import csv
-#######
 import torch.nn as nn
 import torch.nn.functional as F
 import math, copy, time
 from torch.autograd import Variable
 import matplotlib.pyplot as plt##
-###########
 from tqdm import tqdm
 import torch.optim.lr_scheduler as lr_scheduler
 from transformers import BertTokenizer, BertModel
@@ -35,11 +30,6 @@ from sklearn.metrics import f1_score
 import copy
 logger = logging.getLogger(__name__)
 from Abstraction import *
-###
-
-# from Additional_Experiments import LLMs_RC
-# from Additional_Experiments import solve_analogies
-
 
 
 
@@ -178,11 +168,6 @@ def rc_eval(args,model,abstract,batch_data,device,idx2word='none'):
         rel_dic = json.load(f)['rel_dic']
         rel_dic_rev = {y: x for x, y in rel_dic.items()}
     ####
-# #
-#     file_name='essential_files/id2prop.json'
-#     id2kbid= json.load(open(file_name))['id2prop']
-#     kbid2id= {y: x for x, y in id2kbid.items()}
-    ####
     with open('essential_files/prop_wiki_all.json') as f:
         properties = json.load(f)['prop_wiki_all']
     id2kbid={}
@@ -193,16 +178,7 @@ def rc_eval(args,model,abstract,batch_data,device,idx2word='none'):
     #
     kbid2id= {y: x for x, y in id2kbid.items()}
 
-    # print('kbid2id',kbid2id)
-
-
     subclass_f1={}
-
-
-
-    # with open('essential_files/properties-with-labels.json') as f:
-    #     properties = json.load(f)
-
     with open('essential_files/prop_wiki_all.json') as f:
         properties = json.load(f)['prop_wiki_all']
 
@@ -230,15 +206,6 @@ def rc_eval(args,model,abstract,batch_data,device,idx2word='none'):
         id2kbid[p]=n
         kbid_as_special_tokens_rev[n]=p
         kbid_as_special_tokens[p]=n
-
-
-
-
-    ################
-
-
-
-
     PREDICTIONS=[]
     Y=[]
     PREDICTIONS_h=[]
@@ -330,10 +297,7 @@ def rc_eval(args,model,abstract,batch_data,device,idx2word='none'):
                     subclass_f1[yl]={'relation':[],'Y':[]}
                     subclass_f1[yl]['relation'].append(t1)
                     subclass_f1[yl]['Y'].append(t2)
-            # print('correct',correct)
-            # print('relations',relations)
-            # print('y',y)
-            # print('++++')
+
             check=True
             if check:
 
@@ -366,11 +330,7 @@ def rc_eval(args,model,abstract,batch_data,device,idx2word='none'):
                 Y_0.extend(y0.flatten().tolist())
             PREDICTIONS.extend(relations.flatten().tolist())
             Y.extend(y.flatten().tolist())
-        ##
-        # h_data={'evaluation_data/predictions_not_corect':predictions_not_corect}
-        # file='files/predictions_not_corect'+'_'+args.data_type+''+str(di)+'.json'
-        # with open(file, 'w') as fp:
-        #     json.dump(predictions_not_corect, fp)
+
         if di ==1 and args.data_type=='conll' :
             print('eval_epxeriment_data',eval_epxeriment_data.keys())
             cal_similarity(eval_epxeriment_data)
@@ -403,13 +363,6 @@ def rc_eval(args,model,abstract,batch_data,device,idx2word='none'):
 
         dic_r_f1_micro_sorted=dict(sorted(dic_r_f1_micro.items(), key=lambda item: item[1]))
         dic_r_f1_macro_sorted=dict(sorted(dic_r_f1_macro.items(), key=lambda item: item[1]))
-        # for r in dic_r_f1_micro_sorted.keys():
-        #     f1_micor_h=dic_r_f1_micro_sorted[r]
-        #     f1_macro_h=dic_r_f1_macro_sorted[r]
-        #     print('r',r)
-        #     print('f1_micor_h',f1_micor_h)
-        #     print('f1_macro_h',f1_macro_h)
-        #     print('####')
         for r in dic_r_f1_macro_sorted.keys():
             f1_macro_h=dic_r_f1_macro_sorted[r]
             f1_micor_h=dic_r_f1_micro_sorted[r]
@@ -431,9 +384,6 @@ def georoc_train_eval(data_name,mode='train',exp_args=None,DATA=None,model_for_f
     if exp_args==None:
 
         model_name='bert-base-uncased'
-        #model_name='roberta-large'
-        
-        #args.both_ab_not_ab='both'
         args=get_settings(mode,model_name,data_name)
         train_loader,dev_loader_b=rc_data(args)
         print('test',len(train_loader),len(dev_loader_b))
@@ -512,10 +462,6 @@ def georoc_train_eval(data_name,mode='train',exp_args=None,DATA=None,model_for_f
             SimpleLossCompute_=None
 
         scheduler = lr_scheduler.LinearLR(optimizer, start_factor=1.0, end_factor=0.05, total_iters=12)
-  
-
-    
-    ##
     if args.data_parallel:
         model = nn.DataParallel(model)# torch.nn.DataParallel(model, device_ids=[0, 1, 2])
         model=model.to(device)
@@ -559,11 +505,6 @@ def train_model(model,optimizer,scheduler,data,dev_loader_b,args,SimpleLossCompu
 
     for i_d,x in enumerate(tqdm(data)):
         examples=x
-
-        #break
-
-
-
         batch={}
         for key in examples.keys():
             batch[key]=examples[key].to(device) if key!='ids' else examples[key]
@@ -641,11 +582,6 @@ def train_model(model,optimizer,scheduler,data,dev_loader_b,args,SimpleLossCompu
             correct = relations.argmax(axis=1) == y
 
             temp=False if args.abstract=='mask' else True
-
-            # print('loss',loss)
-            # print('relations.argmax(axis=1)',relations.argmax(axis=1))
-            # print('y',y)
-          
             loss.backward(retain_graph=True)
         ############
 
@@ -663,9 +599,6 @@ def train_model(model,optimizer,scheduler,data,dev_loader_b,args,SimpleLossCompu
             scheduler.step()
         model.zero_grad()
     scheduler.step()
-    # if args.experiment_no !='paper2_EVALutionPretraining':
-    #     args.save_dir=args.checkpoint_path+'/model_'+str(args.model_name)+'_'+str(args.data_type)+'.t7'
-    # else:
     args.save_dir=args.checkpoint_path+'/model_'+str(args.model_name)+'.t7'
     print('will save in ',args.save_dir)
 
