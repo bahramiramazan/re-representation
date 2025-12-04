@@ -49,7 +49,7 @@ pip installl tqdm
 ```
 
 # Running
-### Train
+### Train and Eval
 
 The parameters are in the config file. 
 Download the datasets, embeddings etc. and place in the expected locations.
