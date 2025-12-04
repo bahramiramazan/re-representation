@@ -5,7 +5,7 @@ Re-Representation in Sentential Relation Extraction with Sequence Routing Algori
 
 
 # Citation
-If you use our work kindly consider citing the [Re-Representation](https://aclanthology.org/2025.icnlsp-1.31/)
+If you use our work kindly consider citing the paper  [Re-Representation](https://aclanthology.org/2025.icnlsp-1.31/)
 
 ```
 @inproceedings{bahrami-yahyapour-2025-representation,
