@@ -69,12 +69,13 @@ Example: To preprocess conll with roberta-large\
  python main.py  --task preprocess  --data wikidata --tokenizer_name roberta-large
 ```
 
-> to train  \
+> to train for an experiment   \
+experimentNo=one, two, three, four, five according to the paper
 ```
- python main.py  --task train  --data wikidata  --experiment paper2_WikidataPretraining  --model_to_train wordanalogy_re_model --tokenizer_name roberta-large
+ python main.py  --task train  --data wikidata  --experiment experimentNo  --model_to_train wordanalogy_re_model --tokenizer_name roberta-large
 ```
 > to eval  \
 ```
- python main.py  --task eval  --data wikidata  --experiment paper2_WikidataPretraining  --model_to_train wordanalogy_re_model --tokenizer_name roberta-large
+ python main.py  --task eval  --data wikidata  --experiment experimentNo  --model_to_train wordanalogy_re_model --tokenizer_name roberta-large
 ```
 
