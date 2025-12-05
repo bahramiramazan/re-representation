@@ -92,8 +92,8 @@ The datasets can be downloaded from the below link
 + [tacred](https://catalog.ldc.upenn.edu/LDC2018T24)
 Tacred Extensions: 
 obtain retacred and tacredrev/tacrev by follwing the instruction in the provided links.
-+ [retacred](https://arxiv.org/abs/2104.08398)[instrcution](https://github.com/gstoica27/Re-TACRED). 
-+ [tacrev](https://arxiv.org/abs/2004.14855)  [instrcution](https://github.com/DFKI-NLP/tacrev). 
++ [retacred](https://arxiv.org/abs/2104.08398) and the [instrcution](https://github.com/gstoica27/Re-TACRED). 
++ [tacrev](https://arxiv.org/abs/2004.14855) and the  [instrcution](https://github.com/DFKI-NLP/tacrev). 
 # Setup
 ```requirements
 pip install git+https://github.com/glassroom/heinsen_routing
