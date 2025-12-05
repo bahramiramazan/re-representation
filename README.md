@@ -6,11 +6,12 @@ Re-Representation in Sentential Relation Extraction with Sequence Routing Algori
 
 | Model | Tacred | Tacredrev | Retacred | Conll04 | Wikidata |
 |-------|--------|-----------|----------|---------|----------|
-| **Entity Marker (2022)** | 74.6 | 83.2 | 91.1 | – | – |
-| **Curriculum Learning (2021)** | 75.2 | – | **91.4** | – | – |
-| **REBEL (2021)** | – | – | 90.4 | 76.5 | – |
-| **KGpool (2021)** | – | – | – | – | **88.6** |
-| **RAG4RE (2024)** | **86.6** | **88.3** | 73.3 | – | – |
+| **Entity Marker (https://aclanthology.org/2022.aacl-short.21/)** | 74.6 | 83.2 | 91.1 | – | – |
+| **Curriculum Learning (https://arxiv.org/abs/2107.09332)** | 75.2 | – | **91.4** | – | – |
+| **REBEL (https://aclanthology.org/2021.findings-emnlp.204/)** | – | – | 90.4 | 76.5 | – |
+| **KGpool (https://aclanthology.org/2021.findings-acl.48/)** | – | – | – | – | **88.6** |
+| **RAG4RE (https://arxiv.org/abs/2404.13397)** | **86.6** | **88.3** | 73.3 | – | – |
+| ----------------------------------------------------------------------------------------------------
 | **Ours bert H₃** | **84.8 (47.8)** | **85.3 (49.7)** | **89.4 (74.0)** | **99.7 (99.8)** | **84.5 (32.0)** |
 | **Ours bert H₁,H₂,H₃,Decoder** | **87.4 (48.3)** | **88.7 (50.9)** | **88.7 (68.5)** | **100. (100.)** | – |
 | **Ours RoBERTa H₃** | **87.1 (61.1)** | **88.8 (64.2)** | **92.2 (80.1)** | **100. (100.)** | **85.6 (32.9)** |
