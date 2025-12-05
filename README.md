@@ -31,11 +31,25 @@ Re-Representation in Sentential Relation Extraction with Sequence Routing Algori
 
   <tr><td colspan="6" align="center"><b>Baseline Models</b></td></tr>
 
-  <tr><td><b>Entity Marker (2022)</b></td><td>74.6</td><td>83.2</td><td>91.1</td><td>–</td><td>–</td></tr>
-  <tr><td><b>Curriculum Learning (2021)</b></td><td>75.2</td><td>–</td><td><b>91.4</b></td><td>–</td><td>–</td></tr>
-  <tr><td><b>REBEL (2021)</b></td><td>–</td><td>–</td><td>90.4</td><td>76.5</td><td>–</td></tr>
-  <tr><td><b>KGpool (2021)</b></td><td>–</td><td>–</td><td>–</td><td>–</td><td><b>88.6</b></td></tr>
-  <tr><td><b>RAG4RE (2024)</b></td><td><b>86.6</b></td><td><b>88.3</b></td><td>73.3</td><td>–</td><td>–</td></tr>
+  <tr><td><b>
+    <a href="https://aclanthology.org/2022.aacl-short.21/">Entity Marker</a>
+  </b></td><td>74.6</td><td>83.2</td><td>91.1</td><td>–</td><td>–</td></tr>
+  <tr><td><b>
+  <a href="https://arxiv.org/abs/2107.09332">Curriculum Learning</a>
+</b></td><td>75.2</td><td>–</td><td><b>91.4</b></td><td>–</td><td>–</td></tr>
+  <tr><td><b>
+    
+   
+  <a href="https://aclanthology.org/2021.findings-emnlp.204/">REBEL</a>
+</b></td><td>–</td><td>–</td><td>90.4</td><td>76.5</td><td>–</td></tr>
+  <tr><td><b>
+  <a href="https://aclanthology.org/2021.findings-acl.48//">KGpool</a>
+</b></td><td>–</td><td>–</td><td>–</td><td>–</td><td><b>88.6</b></td></tr>
+  <tr><td><b>
+    
+ 
+  <a href="https://arxiv.org/abs/2404.13397">RAG4RE</a>
+</b></td><td><b>86.6</b></td><td><b>88.3</b></td><td>73.3</td><td>–</td><td>–</td></tr>
 
   <tr><td colspan="6" align="center"><b>Our Models</b></td></tr>
 
