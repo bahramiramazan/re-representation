@@ -4,7 +4,7 @@ Re-Representation in Sentential Relation Extraction with Sequence Routing Algori
 
 
 
-
+<!-- 
 | Model | Tacred | Tacredrev | Retacred | Conll04 | Wikidata |
 |-------|--------|-----------|----------|---------|----------|
 | **[Entity Marker ](https://aclanthology.org/2022.aacl-short.21/)** | 74.6 | 83.2 | 91.1 | – | – |
@@ -16,6 +16,35 @@ Re-Representation in Sentential Relation Extraction with Sequence Routing Algori
 | **bert H₃** | **84.8 (47.8)** | **85.3 (49.7)** | **89.4 (74.0)** | **99.7 (99.8)** | **84.5 (32.0)** |
 | **bert H₁,H₂,H₃,Decoder** | **87.4 (48.3)** | **88.7 (50.9)** | **88.7 (68.5)** | **100. (100.)** | – |
 | **RoBERTa H₃** | **87.1 (61.1)** | **88.8 (64.2)** | **92.2 (80.1)** | **100. (100.)** | **85.6 (32.9)** |
+
+ -->
+
+<table>
+  <tr>
+    <th>Model</th>
+    <th>Tacred</th>
+    <th>Tacredrev</th>
+    <th>Retacred</th>
+    <th>Conll04</th>
+    <th>Wikidata</th>
+  </tr>
+
+  <tr><td colspan="6" align="center"><b>Baseline Models</b></td></tr>
+
+  <tr><td><b>Entity Marker (2022)</b></td><td>74.6</td><td>83.2</td><td>91.1</td><td>–</td><td>–</td></tr>
+  <tr><td><b>Curriculum Learning (2021)</b></td><td>75.2</td><td>–</td><td><b>91.4</b></td><td>–</td><td>–</td></tr>
+  <tr><td><b>REBEL (2021)</b></td><td>–</td><td>–</td><td>90.4</td><td>76.5</td><td>–</td></tr>
+  <tr><td><b>KGpool (2021)</b></td><td>–</td><td>–</td><td>–</td><td>–</td><td><b>88.6</b></td></tr>
+  <tr><td><b>RAG4RE (2024)</b></td><td><b>86.6</b></td><td><b>88.3</b></td><td>73.3</td><td>–</td><td>–</td></tr>
+
+  <tr><td colspan="6" align="center"><b>Our Models</b></td></tr>
+
+  <tr><td><b>Ours bert H₃</b></td><td><b>84.8 (47.8)</b></td><td><b>85.3 (49.7)</b></td><td><b>89.4 (74.0)</b></td><td><b>99.7 (99.8)</b></td><td><b>84.5 (32.0)</b></td></tr>
+  <tr><td><b>Ours bert H₁,H₂,H₃,Decoder</b></td><td><b>87.4 (48.3)</b></td><td><b>88.7 (50.9)</b></td><td><b>88.7 (68.5)</b></td><td><b>100. (100.)</b></td><td>–</td></tr>
+  <tr><td><b>Ours RoBERTa H₃</b></td><td><b>87.1 (61.1)</b></td><td><b>88.8 (64.2)</b></td><td><b>92.2 (80.1)</b></td><td><b>100. (100.)</b></td><td><b>85.6 (32.9)</b></td></tr>
+
+</table>
+
 
 
 
