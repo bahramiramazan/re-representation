@@ -64,8 +64,6 @@ if __name__ == "__main__":
     elif str(task)=='abstraction' :
         get_abstract_data() 
 
-    elif str(task)=='gpt' :
-        correct_predictions() 
     else:
         print('task could be one of the  train or eval or preprocess or collect')
     
