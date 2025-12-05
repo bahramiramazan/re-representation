@@ -87,18 +87,13 @@ If you use our work kindly consider citing the paper  [Re-Representation](https:
 Download the datasets and place it in their respective folders at unprocessed_data folder.
 The datasets can be downloaded from the below link
 
-[Wikidata](https://drive.google.com/file/d/1mmKLh6a78GVNizBoCGhs5ZMYJX2g-DIU/view?usp=sharing)
-
-[conll04](https://huggingface.co/datasets/DFKI-SLT/conll04)
-
-[tacred](https://catalog.ldc.upenn.edu/LDC2018T24)
-
-## Tacred Extensions: obtain retacred and tacredrev/tacrev by follwing the instruction in the provided links.
-[retacred](https://arxiv.org/abs/2104.08398)[instrcution](https://github.com/gstoica27/Re-TACRED). 
-[tacrev](https://arxiv.org/abs/2004.14855)  [instrcution](https://github.com/DFKI-NLP/tacrev). 
-
-
-
++ [Wikidata](https://drive.google.com/file/d/1mmKLh6a78GVNizBoCGhs5ZMYJX2g-DIU/view?usp=sharing)
++ [conll04](https://huggingface.co/datasets/DFKI-SLT/conll04)
++ [tacred](https://catalog.ldc.upenn.edu/LDC2018T24)
+Tacred Extensions: 
+obtain retacred and tacredrev/tacrev by follwing the instruction in the provided links.
++ [retacred](https://arxiv.org/abs/2104.08398)[instrcution](https://github.com/gstoica27/Re-TACRED). 
++ [tacrev](https://arxiv.org/abs/2004.14855)  [instrcution](https://github.com/DFKI-NLP/tacrev). 
 # Setup
 ```requirements
 pip install git+https://github.com/glassroom/heinsen_routing
