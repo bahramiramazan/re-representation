@@ -12,7 +12,8 @@ Re-Representation in Sentential Relation Extraction with Sequence Routing Algori
 | **[REBEL](https://aclanthology.org/2021.findings-emnlp.204/)** | – | – | 90.4 | 76.5 | – |
 | **[KGpool](https://aclanthology.org/2021.findings-acl.48/)** | – | – | – | – | **88.6** |
 | **[RAG4RE](https://arxiv.org/abs/2404.13397)** | **86.6** | **88.3** | 73.3 | – | – |
-|+------- Ours|
++------- 
+ours:
 | **bert H₃** | **84.8 (47.8)** | **85.3 (49.7)** | **89.4 (74.0)** | **99.7 (99.8)** | **84.5 (32.0)** |
 | **bert H₁,H₂,H₃,Decoder** | **87.4 (48.3)** | **88.7 (50.9)** | **88.7 (68.5)** | **100. (100.)** | – |
 | **RoBERTa H₃** | **87.1 (61.1)** | **88.8 (64.2)** | **92.2 (80.1)** | **100. (100.)** | **85.6 (32.9)** |
