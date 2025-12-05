@@ -95,6 +95,7 @@ The datasets can be downloaded from the below link
 
 obtain retacred by applying the patch from the the following link to the tacred:
 [retacred](https://github.com/gstoica27/Re-TACRED)
+[tacrev](https://arxiv.org/abs/2004.14855) Generate the tacredrev by following the [instrcution](https://github.com/DFKI-NLP/tacrev). 
 
 
 
