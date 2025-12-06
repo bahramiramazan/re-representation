@@ -59,65 +59,6 @@ class Generator(nn.Module):
     def forward(self, x):
         return F.log_softmax(self.proj(x), dim=-1)
 
-class PositionalEncoding(nn.Module):
-  def __init__(self, d_model: int, dropout: float = 0.1, max_length: int = 5000):
-    """
-    Args:
-      d_model:      dimension of embeddings
-      dropout:      randomly zeroes-out some of the input
-      max_length:   max sequence length
-    """
-    # inherit from Module
-    super().__init__()     
-
-    # initialize dropout                  
-    self.dropout = nn.Dropout(p=dropout)      
-
-    # create tensor of 0s
-    pe = torch.zeros(max_length, d_model)    
-
-    # create position column   
-    k = torch.arange(0, max_length).unsqueeze(1)  
-
-    # calc divisor for positional encoding 
-    div_term = torch.exp(                                 
-            torch.arange(0, d_model, 2) * -(math.log(10000.0) / d_model)
-    )
-
-    # calc sine on even indices
-    pe[:, 0::2] = torch.sin(k * div_term)    
-
-    # calc cosine on odd indices   
-    pe[:, 1::2] = torch.cos(k * div_term)  
-
-    # add dimension     
-    pe = pe.unsqueeze(0)          
-
-    # buffers are saved in state_dict but not trained by the optimizer                        
-    self.register_buffer("pe", pe)                        
-
-  def forward(self, x):
-    """
-    Args:
-      x:        embeddings (batch_size, seq_length, d_model)
-    
-    Returns:
-                embeddings + positional encodings (batch_size, seq_length, d_model)
-    """
-    # add positional encoding to the embeddings
-    x = x + self.pe[:, : x.size(1)].requires_grad_(False) 
-
-    # perform dropout
-    return self.dropout(x)
-
-
-def init_all(model, init_func, *params, **kwargs):
-    for p in model.parameters():
-        init_func(p, *params, **kwargs)
-
-
-
-
 
 class MLP(nn.Module):
     def __init__(self, input_sizes, dropout_prob=0.2, bias=False):
@@ -184,8 +125,8 @@ class Relation_Classifier_Model(nn.Module):
         self.modality=args.model_name#'roberta-large' if model_name=='roberta-large'  else 'bert-base-uncased'
 
         tokenizer_special_dic='semeval_2012_re' if args.data_type=='semeval_2012' else 're'
-        #self.transformer_config, self.transformer = _get_pretrained_transformer2(self.modality) if args.data_type=='wordanalogy' else  _get_pretrained_transformer3(self.modality) 
-        self.transformer_config, self.transformer,self.tokenizer =  _get_pretrained_transformer3(self.modality,tokenizer_special_dic=tokenizer_special_dic) 
+        data_selected=args.data_type
+        self.transformer_config, self.transformer,self.tokenizer =  _get_pretrained_transformer3(data_selected,self.modality,tokenizer_special_dic=tokenizer_special_dic) 
 
 
         self.transformer.resize_token_embeddings(len(self.tokenizer))
@@ -195,11 +136,11 @@ class Relation_Classifier_Model(nn.Module):
         ###***head_conditional***
         if 'head_conditional' in args.heads:
 
-            encoder_layer = nn.TransformerEncoderLayer(d_model=self.embed_size, nhead=self.head,batch_first=True)
-            self.transformer_encoder = nn.TransformerEncoder(encoder_layer, num_layers=6)
-            for name, param in self.transformer_encoder.named_parameters():
-                if 'weight' in name and param.data.dim() == 2:
-                    nn.init.xavier_normal_(param)
+            # encoder_layer = nn.TransformerEncoderLayer(d_model=self.embed_size, nhead=self.head,batch_first=True)
+            # self.transformer_encoder = nn.TransformerEncoder(encoder_layer, num_layers=6)
+            # for name, param in self.transformer_encoder.named_parameters():
+            #     if 'weight' in name and param.data.dim() == 2:
+            #         nn.init.xavier_normal_(param)
                     #nn.init.kaiming_normal_(param, mode='fan_out', nonlinearity='relu')
 
             ##########
@@ -213,7 +154,6 @@ class Relation_Classifier_Model(nn.Module):
 
             ln_tokenizer = len(self.tokenizer) if model_name=='roberta-large' else len(self.tokenizer)
             self.generator=Generator(self.embed_size,ln_tokenizer)
-            self.PositionalEncoding=PositionalEncoding(self.embed_size)
             
        
             for name, param in self.generator.named_parameters():
@@ -546,8 +486,8 @@ class Relation_Classifier_Model(nn.Module):
                 x2 = self.transformer(ents_flagged_plus_rel_idxs,attention_mask=mask)['hidden_states'][flg_n]
             else:
                 x2 = self.transformer(ents_flagged_plus_rel_idxs,attention_mask=mask)['hidden_states'][flg_n]
-            x1=self.PositionalEncoding(x1)
-            x2=self.PositionalEncoding(x2)
+            # x1=self.PositionalEncoding(x1)
+            # x2=self.PositionalEncoding(x2)
             if args.data_type=='wikidata' :
                 t=sentence_flagged_masks_idxs
                 temp_mask=t.unsqueeze(-1).repeat(1*self.head,1,t.shape[1]).to(self.device)
@@ -598,8 +538,6 @@ class Relation_Classifier_Model(nn.Module):
             x=r
             if return_offset:
                 return r
-            # print('r',r.shape)
-            # exit()
 
         if 'head_1' in args.heads or 'head_2' in args.heads or 'head_3' in args.heads:
             if 'head_conditional' in args.heads:

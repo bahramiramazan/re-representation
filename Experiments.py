@@ -43,12 +43,12 @@ from rc_util import _get_pretrained_transformer3
 def get_settings(mode,model_name,data_name):
 
     #tokenizer = AutoTokenizer.from_pretrained("./tokenizer/") if model_name=='roberta-large' else BertTokenizer.from_pretrained("./tokenizer/")
-
+    data_selected=data_name
     tokenizer_special_dic='semeval_2012_re' if data_name=='semeval_2012' else 're' 
     if 'wordanalogy' in data_name :
         tokenizer_special_dic='default'
 
-    _, _,tokenizer =  _get_pretrained_transformer3(model_name,tokenizer_special_dic=tokenizer_special_dic) 
+    _, _,tokenizer =  _get_pretrained_transformer3(data_selected,model_name,tokenizer_special_dic=tokenizer_special_dic) 
 
     Train_Args= {
     "batch_size": 128,

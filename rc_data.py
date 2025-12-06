@@ -998,7 +998,10 @@ def pre_process(data_name):
     if 'wordanalogy' in data_selected :
         tokenizer_special_dic='default'
 
-    _, _,tokenizer =  _get_pretrained_transformer3(modality,tokenizer_special_dic=tokenizer_special_dic) 
+
+    _, _,tokenizer =  _get_pretrained_transformer3(data_selected,modality,tokenizer_special_dic=tokenizer_special_dic) 
+
+
 
 
 

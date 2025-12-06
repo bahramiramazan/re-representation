@@ -59,74 +59,32 @@ for p,n in enumerate(properties.keys()):
 
 
 
+def set_tokenizer(data_selected,tokenizer,tokenizer_special_dic='default'):
 
-# with open('essential_files/wordanalogyrel_dic_sre.json') as f:
-#     wordanalogyrel_dic = json.load(f)['rel_dic']
+    file='essential_files/Relation_counter_'+str(data_selected)+'.json'
 
-
-# wordanalogyrel_dic_rev = {y: x for x, y in wordanalogyrel_dic.items()}
-# ##
-# with open('essential_files/wordanalogyrel_dic.json') as f:
-#     wordanalogyrel_dic_kb = json.load(f)['rel_dic']
-
-
-# wordanalogyrel_dic_kb_rev = {y: x for x, y in wordanalogyrel_dic_kb.items()}
-
-# SRE_Analogy={'wikidata':[],'retacred':[],'conll':[],'semeval':[]}
-
-
-# file='essential_files/SRE_Analogy.json'
-# SRE_Analogy= json.load(open(file))['SRE_Analogy']
-###
-with open('essential_files/kbid_as_special_tokens.json') as f:
-    kbid_as_special_tokens = json.load(f)
-
-
-# def _get_pretrained_transformer2(modality):
-#     print('modality',modality)
-#     if modality=='bert_large_uncased':
-#         config = { 'name': 'bert-large-uncased','d_depth': 12, 'chunk_len': 512, }
-#         transformer = BertModel.from_pretrained(config['name'], output_hidden_states=True)
-#     elif modality=='bert_base_uncased':
-#         config = { 'name': 'bert-base-uncased','d_depth': 6, 'chunk_len': 512, }
-#         transformer = BertModel.from_pretrained(config['name'], output_hidden_states=True)
-#     elif modality=='roberta-large':
-#         config = { 'name': 'roberta-large', 'revision': '5069d8a', 'd_depth': 12, 'chunk_len': 512, }
-#         tokenizer = AutoTokenizer.from_pretrained(config['name'], revision=config['revision'])
-#         transformer = AutoModelForMaskedLM.from_pretrained(config['name'], output_hidden_states=True, revision=config['revision'])
-
-
-#     elif modality=='roberta-base':
-#         config = { 'name': 'roberta-base', 'revision': '5069d8a', 'd_depth': 6, 'chunk_len': 512, }
-#         tokenizer = AutoTokenizer.from_pretrained(config['name'], revision=config['revision'])
-#         transformer = AutoModelForMaskedLM.from_pretrained(config['name'], output_hidden_states=True, revision=config['revision'])
-
-
-#     return config, transformer
-def set_tokenizer(tokenizer,tokenizer_special_dic='default'):
-
-
-
-    with open('essential_files/properties-with-labels.json') as f:
-        properties = json.load(f)
+    with open(file) as f:
+        kbid_as_special_tokens = json.load(f)
 
     special_tokens_dict = {'additional_special_tokens': ['[mask]','[p0]','[e11]','[e12]','[e21]','[e22]','[entsep]','[es]','[en]', '[CLS]','[SEP]']}
-    if tokenizer=='re':
+    if tokenizer_special_dic=='re':
+
         for key in kbid_as_special_tokens.keys():
+            key=key.lower()
             special_tokens_dict['additional_special_tokens'].append('['+str(key).lower()+']')
-        for t in ['[e11_]','[e12_]','[e21_]','[e22_]']:
-            special_tokens_dict['additional_special_tokens'].append(t)
+
         tokenizer.add_special_tokens(special_tokens_dict)
 
     elif tokenizer_special_dic=='semeval_2012_re':
         file='essential_files/localdatasets/all_relation_dic.json'
+        file='essential_files/localdatasets/all_relation_dic.json'
 
         with open(file) as f:
             kbid_as_special_tokens = json.load(f)['data']
+
         for key in kbid_as_special_tokens.keys():
             special_tokens_dict['additional_special_tokens'].append('['+str(key).lower()+']')
-        for t in ['[e11_]','[e12_]','[e21_]','[e22_]']:
-            special_tokens_dict['additional_special_tokens'].append(t)
+
 
         tokenizer.add_special_tokens(special_tokens_dict)
     else: 
@@ -136,10 +94,11 @@ def set_tokenizer(tokenizer,tokenizer_special_dic='default'):
         tokenizer.add_special_tokens(special_tokens_dict)
 
 
+
     return tokenizer
 
 
-def _get_pretrained_transformer3(modality,tokenizer_special_dic='default'):
+def _get_pretrained_transformer3(data_selected,modality,tokenizer_special_dic='default'):
 
     if modality=='bert-large-uncased':
         config = { 'name': 'bert-large-uncased','d_depth': 25, 'chunk_len': 512,  'emb':1024}
@@ -228,8 +187,11 @@ def _get_pretrained_transformer3(modality,tokenizer_special_dic='default'):
         transformer = ProphetNetEncoder.from_pretrained("patrickvonplaten/prophetnet-large-uncased-standalone",output_hidden_states=True)
 
 
-    tokenizer=set_tokenizer(tokenizer,tokenizer_special_dic=tokenizer_special_dic)
+    tokenizer=set_tokenizer(data_selected,tokenizer,tokenizer_special_dic=tokenizer_special_dic)
     return config, transformer,tokenizer
+
+
+
 
 
 
