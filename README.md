@@ -57,7 +57,7 @@ Re-Representation in Sentential Relation Extraction with Sequence Routing Algori
 
   <tr><td>Ours bert H₁,H₂,H₃,Decoder</td><td><b>87.4</b>(48.3)</td><td>88.7 (50.9)</td><td>88.7 (68.5)</td><td><b>100. (100.)</b></td><td>–</td></tr>
 
-  <tr><td>Ours RoBERTa H₃</td><td><b>87.1 (61.1)</b></td><td><b>88.8 (64.2)</b></td><td><b>92.2 (80.1)</b></td><td><b>100. (100.)</b></td><td><b>85.6 (32.9)</b></td></tr>
+  <tr><td>Ours RoBERTa H₃</td><td><b>87.1 (61.1)</b></td><td><b>88.8 (64.2)</b></td><td><b>92.2 (80.1)</b></td><td><b>100. (100.)</b></td><td>85.6 (32.9)</td></tr>
 
 </table>
 
