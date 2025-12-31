@@ -1,0 +1,97 @@
+{
+  "builder_name": "parquet",
+  "citation": "",
+  "config_name": "default",
+  "dataset_name": "conll04",
+  "dataset_size": 569723,
+  "description": "",
+  "download_checksums": {
+    "hf://datasets/DFKI-SLT/conll04@a252269d2265f4253ca725dad5f8fb5a89f1616d/data/train-00000-of-00001.parquet": {
+      "num_bytes": 117860,
+      "checksum": null
+    },
+    "hf://datasets/DFKI-SLT/conll04@a252269d2265f4253ca725dad5f8fb5a89f1616d/data/validation-00000-of-00001.parquet": {
+      "num_bytes": 40518,
+      "checksum": null
+    },
+    "hf://datasets/DFKI-SLT/conll04@a252269d2265f4253ca725dad5f8fb5a89f1616d/data/test-00000-of-00001.parquet": {
+      "num_bytes": 46577,
+      "checksum": null
+    }
+  },
+  "download_size": 204955,
+  "features": {
+    "entities": [
+      {
+        "end": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "start": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "type": {
+          "dtype": "string",
+          "_type": "Value"
+        }
+      }
+    ],
+    "tokens": {
+      "feature": {
+        "dtype": "string",
+        "_type": "Value"
+      },
+      "_type": "Sequence"
+    },
+    "relations": [
+      {
+        "head": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "tail": {
+          "dtype": "int64",
+          "_type": "Value"
+        },
+        "type": {
+          "dtype": "string",
+          "_type": "Value"
+        }
+      }
+    ],
+    "orig_id": {
+      "dtype": "int64",
+      "_type": "Value"
+    }
+  },
+  "homepage": "",
+  "license": "",
+  "size_in_bytes": 774678,
+  "splits": {
+    "train": {
+      "name": "train",
+      "num_bytes": 360036,
+      "num_examples": 922,
+      "dataset_name": "conll04"
+    },
+    "validation": {
+      "name": "validation",
+      "num_bytes": 95027,
+      "num_examples": 231,
+      "dataset_name": "conll04"
+    },
+    "test": {
+      "name": "test",
+      "num_bytes": 114660,
+      "num_examples": 288,
+      "dataset_name": "conll04"
+    }
+  },
+  "version": {
+    "version_str": "0.0.0",
+    "major": 0,
+    "minor": 0,
+    "patch": 0
+  }
+}
