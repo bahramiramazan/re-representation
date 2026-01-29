@@ -23,8 +23,6 @@ from transformers import AutoTokenizer, AutoModelForMaskedLM, AutoModelForImageC
 import logging
 import torch
 from torch.optim import Optimizer
-from torch.optim.lr_scheduler import LambdaLR
-import os
 import numpy as np
 from sklearn.metrics import f1_score
 import copy

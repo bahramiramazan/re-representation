@@ -1,10 +1,5 @@
 
 
-# util code for finding entiy type in the dataset wikidata
-# written by Ramazan Bahrami
-
-
-
 def find_of_and_add_subscript(label,subscript='x'):
     label_token=label.split(' ')
     new_label=[]
